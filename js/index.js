@@ -5,10 +5,11 @@ $("#btnMercar").click(()=> {
 $.getJSON(jsonProducts, function(respuesta, estado) {
     if(estado === "success") {
         let datos = respuesta
+        
         for(const dato of datos) {
             f++
             $("#contFatherBoxProduct").append(
-        `<div class="divFather" id="divFather">
+        `<div class="divFather" id="divFather${f}" style="grid-area:div${f}">
             <img class="imgProduct${f} imageOfProduct" src="${dato.img}"> 
             <h3 class="nameProduct"> ${dato.description}</h3>
             <b class="priceProduct"> ${formatCurrency("es-Co", "COP", 0, dato.price)}</b>
@@ -22,7 +23,7 @@ $.getJSON(jsonProducts, function(respuesta, estado) {
             </div>
         </div>`);
             // estilos en general divFather
-            $(".divFather").css({"text-align": "center", width: "90%", margin: "0 auto", position: "relative", "margin-bottom": "10px"});
+            $(".divFather").css({"text-align": "center", "width": "90%", "margin": "0 auto", "margin-bottom": "20px","position": "relative"});
             // estilos en general priceProduct
             $(".priceProduct").css({color: "#f6d454"});
             // estilos en general divcontenedor de texto agregar (le doy una altura para mas adelante al hacer hover no se des-ubiquen los divs inferiones)
@@ -56,6 +57,7 @@ $.getJSON(jsonProducts, function(respuesta, estado) {
             // 
             $(".buttonImgCarAdd1").hover (()=> {effectCarImg(1)});$(".buttonImgCarAdd2").hover (()=> {effectCarImg(2)});$(".buttonImgCarAdd3").hover (()=> {effectCarImg(3)});$(".buttonImgCarAdd4").hover (()=> {effectCarImg(4)});$(".buttonImgCarAdd5").hover (()=> {effectCarImg(5)});$(".buttonImgCarAdd6").hover (()=> {effectCarImg(6)});$(".buttonImgCarAdd7").hover (()=> {effectCarImg(7)});$(".buttonImgCarAdd8").hover (()=> {effectCarImg(8)});$(".buttonImgCarAdd9").hover (()=> {effectCarImg(9)});$(".buttonImgCarAdd10").hover (()=> {effectCarImg(10)});$(".buttonImgCarAdd11").hover (()=> {effectCarImg(11)});$(".buttonImgCarAdd12").hover (()=> {effectCarImg(12)});$(".buttonImgCarAdd13").hover (()=> {effectCarImg(13)});;
         }
+        $("#divFather13").css({width: "30%"})
         const buttonImgCarAdd = document.querySelectorAll(".buttonImgAdd")
             buttonImgCarAdd.forEach((buttonImgcar) => {
             buttonImgcar.addEventListener("click", ()=> {

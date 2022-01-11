@@ -19,8 +19,7 @@ function effectCarImg(numeroclass) {
     $(".buttonImgCarAdd"+numeroclass).mouseout(()=>{$(".textAgregar"+numeroclass).hide();
 })
 }
-
-
+// function for money format
 function formatCurrency (locales, currency, fractionDigits, number) {
     var formatted = new Intl.NumberFormat(locales, {
     style: 'currency',

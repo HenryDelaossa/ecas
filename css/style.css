@@ -1,0 +1,131 @@
+.main .sectionOneIndex {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center; }
+  .main .sectionOneIndex .divImgAjoSectOne {
+    width: 30%;
+    height: auto; }
+    .main .sectionOneIndex .divImgAjoSectOne .imgAjo {
+      width: 100%;
+      height: auto;
+      transform: rotate(-40deg); }
+  .main .sectionOneIndex .divImgCebSectOne {
+    width: 30%;
+    height: auto; }
+    .main .sectionOneIndex .divImgCebSectOne .imgCeb {
+      width: 100%;
+      height: auto;
+      transform: rotate(90deg); }
+  .main .sectionOneIndex .divTextSectOne {
+    width: 30%;
+    margin-bottom: 4rem; }
+    .main .sectionOneIndex .divTextSectOne h1 {
+      padding: 0;
+      font-size: 1.6rem;
+      margin-bottom: 1.4rem;
+      color: #fefefe; }
+    .main .sectionOneIndex .divTextSectOne p {
+      width: 100%;
+      text-align: center;
+      font-size: 1.4rem;
+      margin-bottom: 2rem; }
+    .main .sectionOneIndex .divTextSectOne button {
+      background-color: transparent;
+      font-size: 1.3rem;
+      font-weight: lighter;
+      color: #fefefe;
+      letter-spacing: 2px;
+      font-family: sans-serif;
+      border-radius: 10px;
+      border: 1px solid #f6d454;
+      padding: .3rem;
+      width: 100px;
+      height: auto;
+      cursor: pointer;
+      transition: 200ms; }
+      .main .sectionOneIndex .divTextSectOne button:hover {
+        background-color: #f6d454;
+        border: 1px solid #fefefe;
+        color: #333232;
+        transform: scale(1.04, 1.04); }
+
+.main .sectionTwoIndex .contFatherBoxProduct {
+  display: grid;
+  grid-template-areas: "div1 div2 div3" "div4 div5 div6" "div7 div8 div9" "div10 div11 div12";
+  grid-row-gap: 1rem;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  justify-content: center;
+  justify-items: center;
+  margin: 0 auto;
+  margin-bottom: 2rem; }
+
+.header {
+  margin-bottom: 0; }
+  .header .contUno {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f6d454;
+    margin-bottom: 0; }
+    .header .contUno .divLogo {
+      margin-top: 4px;
+      margin-left: 1rem;
+      align-content: center;
+      cursor: pointer; }
+      .header .contUno .divLogo .logo {
+        width: 100%;
+        height: auto;
+        border-radius: 80px; }
+    .header .contUno .navMenu .princUlNav {
+      list-style-type: none;
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      justify-content: center; }
+      .header .contUno .navMenu .princUlNav .liProduct,
+      .header .contUno .navMenu .princUlNav .licontact,
+      .header .contUno .navMenu .princUlNav .liAcercDe,
+      .header .contUno .navMenu .princUlNav .liInSesion {
+        margin: 0 1rem 0 1rem; }
+        .header .contUno .navMenu .princUlNav .liProduct a,
+        .header .contUno .navMenu .princUlNav .licontact a,
+        .header .contUno .navMenu .princUlNav .liAcercDe a,
+        .header .contUno .navMenu .princUlNav .liInSesion a {
+          text-decoration: none;
+          font-size: 1.3rem;
+          color: #333232; }
+          .header .contUno .navMenu .princUlNav .liProduct a:hover,
+          .header .contUno .navMenu .princUlNav .licontact a:hover,
+          .header .contUno .navMenu .princUlNav .liAcercDe a:hover,
+          .header .contUno .navMenu .princUlNav .liInSesion a:hover {
+            text-decoration: overline; }
+    .header .contUno .divImgLogo {
+      align-content: center;
+      background-color: #fefefe;
+      width: 60px;
+      height: 50px;
+      margin: 10px 20px 10px 0;
+      border-radius: 50%;
+      text-align: center;
+      cursor: pointer; }
+      .header .contUno .divImgLogo .logo {
+        vertical-align: middle;
+        margin-left: 1rem;
+        width: 70%;
+        height: auto; }
+  .header .contDos {
+    width: 100%;
+    background-color: #333232; }
+    .header .contDos .pContDos {
+      color: #fefefe;
+      text-align: center; }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+body {
+  background-color: #333232; }

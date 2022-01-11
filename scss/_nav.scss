@@ -1,0 +1,68 @@
+.header {
+  margin-bottom: 0;
+  .contUno {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $colorTEr;
+    margin-bottom: 0;
+    .divLogo {
+      margin-top: 4px;
+      margin-left: 1rem;
+      align-content: center;
+      cursor: pointer;
+      .logo {
+        width: 100%;
+        height: auto;
+        border-radius: 80px;
+      }
+    }
+    .navMenu {
+      .princUlNav {
+        list-style-type: none;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: center;
+        .liProduct,
+        .licontact,
+        .liAcercDe,
+        .liInSesion {
+          margin: 0 1rem 0 1rem;
+          a {
+            text-decoration: none;
+            font-size: 1.3rem;
+            color: $colorPrim;
+            &:hover {
+              text-decoration: overline;
+            }
+          }
+        }
+      }
+    }
+    .divImgLogo {
+      align-content: center;
+      background-color: $colorSec;
+      width: 60px;
+      height: 50px;
+      margin: 10px 20px 10px 0;
+      border-radius: 50%;
+      text-align: center;
+      cursor: pointer;
+      .logo {
+        vertical-align: middle;
+        margin-left: 1rem;
+        width: 70%;
+        height: auto;
+      }
+    }
+  }
+  .contDos {
+    width: 100%;
+    background-color: $colorPrim;
+    .pContDos {
+      color: $colorSec;
+      text-align: center;
+    }
+  }
+}

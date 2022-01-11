@@ -1,0 +1,15 @@
+.main {
+  .sectionTwoIndex {
+    .contFatherBoxProduct {
+      display: grid;
+      grid-template-areas: "div1 div2 div3" "div4 div5 div6" "div7 div8 div9" "div10 div11 div12";
+      grid-row-gap: 1rem;
+      grid-template-columns: auto;
+      grid-template-rows: auto;
+      justify-content: center;
+      justify-items: center;
+      margin: 0 auto;
+      margin-bottom: 2rem;
+    }
+  }
+}

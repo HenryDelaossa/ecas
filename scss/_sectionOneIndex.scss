@@ -1,0 +1,63 @@
+.main {
+  .sectionOneIndex {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    .divImgAjoSectOne {
+      width: 30%;
+      height: auto;
+      .imgAjo {
+        width: 100%;
+        height: auto;
+        transform: rotate(-40deg);
+      }
+    }
+    .divImgCebSectOne {
+      width: 30%;
+      height: auto;
+      .imgCeb {
+        width: 100%;
+        height: auto;
+        transform: rotate(90deg);
+      }
+    }
+    .divTextSectOne {
+      width: 30%;
+      margin-bottom: 4rem;
+      h1 {
+        padding: 0;
+        font-size: 1.6rem;
+        margin-bottom: 1.4rem;
+        color: $colorSec;
+      }
+      p {
+        width: 100%;
+        text-align: center;
+        font-size: 1.4rem;
+        margin-bottom: 2rem;
+      }
+      button {
+        background-color: transparent;
+        font-size: 1.3rem;
+        font-weight: lighter;
+        color: $colorSec;
+        letter-spacing: 2px;
+        font-family: sans-serif;
+        border-radius: 10px;
+        border: 1px solid $colorTEr;
+        padding: .3rem;
+        width: 100px;
+        height: auto;
+        cursor: pointer;
+        transition: 200ms;
+        &:hover {
+          background-color: $colorTEr;
+          border: 1px solid $colorSec;
+          color: $colorPrim;
+          transform: scale(1.04, 1.04);
+        }
+      }
+    }
+  }
+}

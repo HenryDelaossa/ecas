@@ -20,11 +20,11 @@ function effectCarImg(numeroclass) {
 })
 }
 // function for money format
-function formatCurrency (locales, currency, fractionDigits, number) {
-    var formatted = new Intl.NumberFormat(locales, {
-    style: 'currency',
-    currency: currency,
-    minimumFractionDigits: fractionDigits
-    }).format(number);
-    return formatted;
-}
+// function formatCurrency (locales, divisa, digitosFraccion, number) {
+//     var formatted = new Intl.NumberFormat(locales, {
+//     style: 'currency',
+//     currency: divisa,
+//     minimumFractionDigits: digitosFraccion
+//     }).format(number);
+//     return formatted;
+// }

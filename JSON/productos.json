@@ -1,16 +1,16 @@
 
 [
-    {"img": "img/tomate500.png", "description": "Pasta de tomate x 500ml.","price" : 20000 },
-    {"img": "img/tomate750.png","description": "Pasta de tomate x 750ml.","price" : 25000},
-    {"img": "img/mayocil.png","description": "Mayonesa de cilantro.","price" : 16000},
-    {"img": "img/tomVerdes.png","description": "Pasta de tomatillos verdes x 500ml","price" : 25000},
-    {"img": "img/cebollitasEncuertidas.png","description": "Cebollitas encurtidas x 450ml.","price" : 12000},
-    {"img": "img/ghee.png","description": "ghee x 300gr de German borras.", "price" : 25000},
-    {"img": "img/ajiyuq.png","description": "Aji yuquitania x 50gr.","price" : 30000},
-    {"img": "img/yuqx25.png","description": "Aji yuquitania x 25gr.","price" : 20000},
-    {"img": "img/mermelada agraz.png","description": "Mermelada de agraz x 285gr.","price" : 16000},
-    {"img": "img/mermPanela.png","description": "Mermelada de agraz en panela x 210gr.","price" : 16000},
-    {"img": "img/aromatica.png","description": "Macarito fusion x 12 unidades.","price" :20000},
-    {"img": "img/arhuaco.png","description": "Cafe arhuaco organico x 500gr.","price" : 33500},
-    {"img": "img/castillo.png","description": "Cafe castillo caramelo x 500gr.","price" : 33500}
+    {"img": "img/tomate500.png", "description": "Pasta de tomate x 500ml.","price" : "$20000" },
+    {"img": "img/tomate750.png","description": "Pasta de tomate x 750ml.","price" : "$25000"},
+    {"img": "img/mayocil.png","description": "Mayonesa de cilantro.","price" : "$16000"},
+    {"img": "img/tomVerdes.png","description": "Pasta de tomatillos verdes x 500ml","price" : "$25000"},
+    {"img": "img/cebollitasEncuertidas.png","description": "Cebollitas encurtidas x 450ml.","price" : "$12000"},
+    {"img": "img/ghee.png","description": "ghee x 300gr de German borras.", "price" : "$25000"},
+    {"img": "img/ajiyuq.png","description": "Aji yuquitania x 50gr.","price" : "$30000"},
+    {"img": "img/yuqx25.png","description": "Aji yuquitania x 25gr.","price" : "$20000"},
+    {"img": "img/mermelada agraz.png","description": "Mermelada de agraz x 285gr.","price" : "$16000"},
+    {"img": "img/mermPanela.png","description": "Mermelada de agraz en panela x 210gr.","price" : "$16000"},
+    {"img": "img/aromatica.png","description": "Macarito fusion x 12 unidades.","price" :"$20000"},
+    {"img": "img/arhuaco.png","description": "Cafe arhuaco organico x 500gr.","price" : "$33500"},
+    {"img": "img/castillo.png","description": "Cafe castillo caramelo x 500gr.","price" : "$33500"}
 ]

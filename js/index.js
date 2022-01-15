@@ -1,3 +1,5 @@
+// const cli = require("nodemon/lib/cli");
+
 // add childrens to create products container
 const jsonProducts = "JSON/productos.json"
 let f = 0
@@ -12,7 +14,7 @@ $.getJSON(jsonProducts, function(respuesta, estado) {
         `<div class="divFather" id="divFather${f}" style="grid-area:div${f}">
             <img class="imgProduct${f} imageOfProduct" src="${dato.img}"> 
             <h3 class="nameProduct"> ${dato.description}</h3>
-            <b class="priceProduct"> ${formatCurrency("es-Co", "COP", 0, dato.price)}</b>
+            <p class="priceProduct"> ${dato.price}</p>
             <img  class="buttonImgCarAdd${f} buttonImgAdd" src="img/add.png"> 
             <div class="divtextAgr">
                 <p class="textAgregar${f}"></p>
@@ -57,30 +59,111 @@ $.getJSON(jsonProducts, function(respuesta, estado) {
             // 
             $(".buttonImgCarAdd1").hover (()=> {effectCarImg(1)});$(".buttonImgCarAdd2").hover (()=> {effectCarImg(2)});$(".buttonImgCarAdd3").hover (()=> {effectCarImg(3)});$(".buttonImgCarAdd4").hover (()=> {effectCarImg(4)});$(".buttonImgCarAdd5").hover (()=> {effectCarImg(5)});$(".buttonImgCarAdd6").hover (()=> {effectCarImg(6)});$(".buttonImgCarAdd7").hover (()=> {effectCarImg(7)});$(".buttonImgCarAdd8").hover (()=> {effectCarImg(8)});$(".buttonImgCarAdd9").hover (()=> {effectCarImg(9)});$(".buttonImgCarAdd10").hover (()=> {effectCarImg(10)});$(".buttonImgCarAdd11").hover (()=> {effectCarImg(11)});$(".buttonImgCarAdd12").hover (()=> {effectCarImg(12)});$(".buttonImgCarAdd13").hover (()=> {effectCarImg(13)});;
         }
-        $("#divFather13").css({width: "30%"})
+        $("#divFather13").css({width: "30%"});
+        // evento sobre carritos
         const buttonImgCarAdd = document.querySelectorAll(".buttonImgAdd")
             buttonImgCarAdd.forEach((buttonImgcar) => {
             buttonImgcar.addEventListener("click", ()=> {
                 getPropert(event)
             })
         })
-
-
     }
 });
+});
+// evento sobre img add to cart
+$(".logo, .divImgLogo").click(()=>{
+    $(".contenedorItemsCarito").slideDown();
+    $("#body").css({overflow:"hidden"});
+    actualPreciosCar()
 })
-function getPropert (event) {
-    const buttonAdd = event.target
-    const cont = buttonAdd.closest("#divFather");
-    const tit = cont.querySelector(".nameProduct").textContent;
-    const price = cont.querySelector(".priceProduct").textContent;
-    const imgn = cont.querySelector(".imageOfProduct").src;
-    addToCar(tit, price, imgn)
-    console.log(tit+price+imgn)
+// contenedor de carro
+$("#body").append(`<div class="contenedorItemsCarito" style="display: none;">
+                    <div class="caontenidoCar">
+                    <div class="infoDescr">
+                        <p class="pindodesc">Tu mercado</p>
+                    </div>
+                        <div class="productosCar" style="width:100%; height:90%;overflow:auto"></div>
+                        <div>
+                            <p>Total a pagar: $<span class="valorTotal">0</span>
+                        </div>
+                    </div>
+</div>`);
+$(".contenedorItemsCarito").css({position: "fixed", top: "0", left:"0", width:"100%", height:"100%", "background-color": "#00000050"});
+$(".caontenidoCar").css({position:"absolute", top:"50%", left:"50%", transform:"translate(-50%, -50%)", "background-color": "lightslategray", width:"50%", height:"70%"});
+$(".pindodesc").css({"text-align":"center", "margin-left":"20px"});
 
-}
-function addToCar() {
+
+// function principal piloto de carro
+function getPropert (e) {
+    const buttonAdd = e.target
+    // obtenndre el contenido mas reelevante de los productos para luego usarlos al hacer append para el carro
+    const cont = buttonAdd.closest(".divFather");
+    const tit = cont.querySelector(".nameProduct").textContent;
+    const price =cont.querySelector(".priceProduct").textContent;
+    const imgn = cont.querySelector(".imageOfProduct").src;
     
+    // uso el contenido anteriorpara hacer append dentro de cada elemento que se vaya a agregar al carrito
+    $(".productosCar").append(`<div class="contCar" style="margin: 0 auto;">
+                        <img src="${imgn}" style="width:60px; height:80px"> </img>
+                        <h4>${tit}</h4>
+                        <img src="/img/substract.png" class="substract">
+                        <input class="cantidadProduct" type="number" max="100"value="1">
+                        <img src="/img/addsuma.png" class="addsuma">
+                        <p class="priceincar">${price}</p>
+                        <b class="quitarProducto" style="cursor: pointer;">quitar</b>
+                    </div>`)
+                    $(".contCar").css({display: "flex", "justify-content": "space-between", "align-items": "center", width:"100%",height:"auto", "background-color":"white", margin:"10px 0 0 0"});
+                    $(".substract, .addsuma").css({width:"30px", cursor:"pointer"});
+    const productosCar = document.querySelectorAll(".quitarProducto");
+    productosCar.forEach(click => {
+        click.addEventListener("click", (event) => {
+            quitarProducto(event);
+            actualPreciosCar()
+            // console.log("clickie btn btn quitar"+event.target)
+        });
+    })
+    const productosCarsm = document.querySelectorAll(".cantidadProduct");
+    productosCarsm.forEach(click => {
+        click.addEventListener("change", (event) => {
+            cambCantid(event);
+            actualPreciosCar()
+        })
+    })
+}
+
+function actualPreciosCar () {
+    let totalprice = 0;
+    const valorTotal = document.querySelector(".valorTotal");
+    // console.log(valorTotal);
+
+    const itemcar = document.querySelectorAll(".contCar");
+    // console.log(itemcar);
+
+    itemcar.forEach(click => {
+        // get dates from html elements - obtengo datos desde elementos html
+        const priceproduct = Number(click.querySelector(".priceincar").textContent.replace("$", ""));
+        const plusAmount = Number(click.querySelector(".cantidadProduct").value);
+        // console.log(plusAmount);
+        totalprice = totalprice + priceproduct * plusAmount
+    })
+    $(valorTotal).text(totalprice)
+    // $(".valorTotal").text(totl);
+}
+
+function quitarProducto (event) {
+    const btnremv = event.target
+    // console.log(btnremv)
+    btnremv.closest(".contCar").remove();
+    actualPreciosCar()
+}
+// quito elemento si la cantidad en el inptcantidad es 0
+function cambCantid (event) {
+    const inptcant = event.target;
+    // inptcant.value <= 0? (event.target.closest(".contCar").remove(), actualPreciosCar()) : null
+    if (inptcant.value <= 0) {
+        inptcant.closest(".contCar").remove();
+    }
+    actualPreciosCar();
 }
 
 

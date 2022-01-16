@@ -11,4 +11,31 @@
 }
 body {
     background-color: $colorPrim;
+    .productosCar{
+        .divCatn {
+            input[type=number]::-webkit-inner-spin-button {
+                right: 1px;
+                padding-bottom: 40px;
+                height: 15px;
+                float: left;
+                top: 0;
+                right: -20px;
+            }
+        }
+        .ctnsacar {
+            height: 40px;
+            margin-right: 10px;
+            margin-top: -4px;
+            .pelim{
+                display: none;
+                font-size: 8px;
+                text-align: center;
+                width: 100%;
+                height: 12px;
+            }
+            &:hover > .pelim {
+                display: block;
+            }
+        }
+    }
 }

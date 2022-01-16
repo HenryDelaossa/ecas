@@ -129,3 +129,22 @@
 
 body {
   background-color: #333232; }
+  body .productosCar .divCatn input[type=number]::-webkit-inner-spin-button {
+    right: 1px;
+    padding-bottom: 40px;
+    height: 15px;
+    float: left;
+    top: 0;
+    right: -20px; }
+  body .productosCar .ctnsacar {
+    height: 40px;
+    margin-right: 10px;
+    margin-top: -4px; }
+    body .productosCar .ctnsacar .pelim {
+      display: none;
+      font-size: 8px;
+      text-align: center;
+      width: 100%;
+      height: 12px; }
+    body .productosCar .ctnsacar:hover > .pelim {
+      display: block; }

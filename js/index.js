@@ -23,6 +23,9 @@ $.getJSON(jsonProducts, function(respuesta, estado) {
                 <span class="spancloseTextDescr${f}">X</span>
                 <p class="textDescr${f}"></p>
             </div>
+            <div>
+                <p class="cantInd" style="display:none;">1</p>
+            </div>
         </div>`);
             // estilos en general divFather
             $(".divFather").css({"text-align": "center", "width": "90%", "margin": "0 auto", "margin-bottom": "20px","position": "relative"});
@@ -64,33 +67,41 @@ $.getJSON(jsonProducts, function(respuesta, estado) {
         const buttonImgCarAdd = document.querySelectorAll(".buttonImgAdd")
             buttonImgCarAdd.forEach((buttonImgcar) => {
             buttonImgcar.addEventListener("click", ()=> {
-                getPropert(event)
+                getPropert(event);
             })
         })
     }
 });
 });
 // evento sobre img add to cart
-$(".logo, .divImgLogo").click(()=>{
+$(".adcar, .divImgLogo").click(()=>{
     $(".contenedorItemsCarito").slideDown();
     $("#body").css({overflow:"hidden"});
     actualPreciosCar()
 })
 // contenedor de carro
-$("#body").append(`<div class="contenedorItemsCarito" style="display: none;">
+$("#body").append(`<div class="contenedorItemsCarito" id="contenedorItemsCarito"style="display: none;">
                     <div class="caontenidoCar">
-                    <div class="infoDescr">
-                        <p class="pindodesc">Tu mercado</p>
-                    </div>
+                        <div class="infoDescr">
+                            <p class="pTumercado">Tu mercado</p>
+                        </div>
                         <div class="productosCar" style="width:100%; height:90%;overflow:auto"></div>
                         <div>
                             <p>Total a pagar: $<span class="valorTotal">0</span>
                         </div>
                     </div>
 </div>`);
-$(".contenedorItemsCarito").css({position: "fixed", top: "0", left:"0", width:"100%", height:"100%", "background-color": "#00000050"});
-$(".caontenidoCar").css({position:"absolute", top:"50%", left:"50%", transform:"translate(-50%, -50%)", "background-color": "lightslategray", width:"50%", height:"70%"});
-$(".pindodesc").css({"text-align":"center", "margin-left":"20px"});
+$(".contenedorItemsCarito").css({position: "fixed", top: "0", left:"0", width:"100%", height:"100%", "background-color": "#00000080"});
+$(".caontenidoCar").css({position:"absolute", top:"50%", left:"50%", transform:"translate(-50%, -50%)", "background-color": "#333232", width:"40%", height:"70%"});
+$(".pTumercado").css({"text-align":"center", "margin-left":"20px"});
+
+const contenedorItemsCarito = document.getElementById("contenedorItemsCarito");
+window.addEventListener("click", (event)=> {
+    if(event.target === contenedorItemsCarito) {
+        $(".contenedorItemsCarito").hide(400)
+        $("#body").css({overflow:"visible"})
+    }
+})
 
 
 // function principal piloto de carro
@@ -101,69 +112,119 @@ function getPropert (e) {
     const tit = cont.querySelector(".nameProduct").textContent;
     const price =cont.querySelector(".priceProduct").textContent;
     const imgn = cont.querySelector(".imageOfProduct").src;
-    
+    // aumentar cantodad en carro y borrar duplicados
+    const divsDuplElementos = document.getElementsByClassName("titProductSelect")
+    console.log(divsDuplElementos)
+    for (let i = 0; i < divsDuplElementos.length; i++) {
+        if (divsDuplElementos[i].innerHTML === tit){
+            const estoyd = divsDuplElementos[i].parentElement.querySelector(".cantidadProduct");
+            estoyd.value++;
+            console.log(estoyd);
+            actualPreciosCar();
+            // let elipt = Number(document.querySelector(".cantidadProduct").value);
+            // console.log(elipt)
+            return;
+        }
+    }
+    addCarrr(imgn, tit, price );
+    console.log(buttonAdd)
     // uso el contenido anteriorpara hacer append dentro de cada elemento que se vaya a agregar al carrito
-    $(".productosCar").append(`<div class="contCar" style="margin: 0 auto;">
-                        <img src="${imgn}" style="width:60px; height:80px"> </img>
-                        <h4>${tit}</h4>
-                        <img src="/img/substract.png" class="substract">
-                        <input class="cantidadProduct" type="number" max="100"value="1">
-                        <img src="/img/addsuma.png" class="addsuma">
-                        <p class="priceincar">${price}</p>
-                        <b class="quitarProducto" style="cursor: pointer;">quitar</b>
-                    </div>`)
-                    $(".contCar").css({display: "flex", "justify-content": "space-between", "align-items": "center", width:"100%",height:"auto", "background-color":"white", margin:"10px 0 0 0"});
-                    $(".substract, .addsuma").css({width:"30px", cursor:"pointer"});
-    const productosCar = document.querySelectorAll(".quitarProducto");
+    
+    
+                    
+
+
+    const productosCar = document.querySelectorAll(".ctnsacar");
     productosCar.forEach(click => {
         click.addEventListener("click", (event) => {
             quitarProducto(event);
-            actualPreciosCar()
-            // console.log("clickie btn btn quitar"+event.target)
+            actualPreciosCar();
         });
     })
+    
+    
+    // const productosCar2 = document.querySelectorAll(".quitarProducto");
+    // productosCar2.forEach(click => {
+    //     click.addEventListener("mouseenter", (event) => {
+    //         estres (event)
+    //     });
+    // })
     const productosCarsm = document.querySelectorAll(".cantidadProduct");
     productosCarsm.forEach(click => {
         click.addEventListener("change", (event) => {
             cambCantid(event);
-            actualPreciosCar()
+            actualPreciosCar();
         })
     })
+    estres2 (event) 
+    
+    
+}
+function estres2 (event) {
+    const productosCarsmpr = document.getElementsByClassName("addsuma");
+    for (const djhf of productosCarsmpr) {
+    // window.addEventListener("click", (event) => {
+        if(event.target === djhf) {
+            const estoyd = djhf.parentElement.querySelector(".cantidadProduct");
+            estoyd.value ++
+        }
+    // })
+}
+}
+// carrito agregar
+function addCarrr (imgn, tit, price ) {
+    $(".productosCar").append(`<div class="contCar" style="margin: 0 auto;">
+                                    <img class="imgreduc" src="${imgn}" style="width:60px; height:80px"> </img>
+                                    <h4 class="titProductSelect">${tit}</h4>
+                                    <div class="divCatn">
+                                        <input class="cantidadProduct" type="number" max="10" value="1" name="inptc">
+                                    </div>
+                                    <div class="divpres">
+                                        <h6 class="h6preciounitario">precio unitario:</h6>
+                                        <p class="priceincar">${price}</p>
+                                    </div>
+                                    <div class="ctnsacar" style="cursor: pointer">
+                                        <img class="quitarProducto" src="/img/remove.png" style="cursor: pointer; width:30px; margin: 0 auto; text-align:center" name="henry">
+                                        <p class="pelim">eliminar</p>
+                                    </div>
+                                </div>`)
+    $(".contCar").css({display: "flex", "justify-content": "space-between", "align-items": "center", width:"100%",height:"auto", "background-color":"#f6d454", margin:"10px 0 0 0"});
+    $(".titProductSelect").css({width:"150px"});
+    $(".divpres").css({display:"flex", "flex-direction":"column", "justify-content":"center"})
+    $(".cantidadProduct").css({width:"40px", height:"50px", "text-align":"center","border-radius":"10%"});
+    $(".substract, .addsuma").css({width:"30px", cursor:"pointer"});
+    
 }
 
 function actualPreciosCar () {
     let totalprice = 0;
     const valorTotal = document.querySelector(".valorTotal");
-    // console.log(valorTotal);
-
     const itemcar = document.querySelectorAll(".contCar");
-    // console.log(itemcar);
-
     itemcar.forEach(click => {
         // get dates from html elements - obtengo datos desde elementos html
         const priceproduct = Number(click.querySelector(".priceincar").textContent.replace("$", ""));
         const plusAmount = Number(click.querySelector(".cantidadProduct").value);
-        // console.log(plusAmount);
-        totalprice = totalprice + priceproduct * plusAmount
-    })
-    $(valorTotal).text(totalprice)
-    // $(".valorTotal").text(totl);
+        totalprice = totalprice + priceproduct * plusAmount;
+    });
+    $(valorTotal).text(new Intl.NumberFormat().format(totalprice));
+    
 }
 
 function quitarProducto (event) {
-    const btnremv = event.target
-    // console.log(btnremv)
+    
+    const btnremv = event.target;
     btnremv.closest(".contCar").remove();
-    actualPreciosCar()
+    actualPreciosCar();
 }
 // quito elemento si la cantidad en el inptcantidad es 0
 function cambCantid (event) {
     const inptcant = event.target;
-    // inptcant.value <= 0? (event.target.closest(".contCar").remove(), actualPreciosCar()) : null
     if (inptcant.value <= 0) {
-        inptcant.closest(".contCar").remove();
+        inptcant.value = 1;
     }
+    if (inptcant.value >= 10) {
+        inptcant.value = 10;
+    }
+    
     actualPreciosCar();
 }
-
-

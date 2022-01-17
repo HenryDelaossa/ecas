@@ -1,5 +1,9 @@
 .header {
   margin-bottom: 0;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 100;
   .contUno {
     display: flex;
     justify-content: space-between;
